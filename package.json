@@ -7,9 +7,20 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky",
+    "test": "echo hello world"
+  },
+  "husky": {
+    "hooks": {
+      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
+      "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
+      "post-applypatch": "echo \"[Husky] post-applypatch\"",
+      "pre-commit": "echo \"[Husky] pre-commit\""
+    }
   },
   "dependencies": {
+    "husky": "^9.1.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

@@ -8,17 +8,17 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepare": "husky",
-    "test": "echo hello world"
+	  "prepare": "husky",
+	  "test": "echo hello world"
   },
-  "husky": {
-    "hooks": {
-      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
-      "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
-      "post-applypatch": "echo \"[Husky] post-applypatch\"",
-      "pre-commit": "echo \"[Husky] pre-commit\""
-    }
-  },
+	"husky": {
+		"hooks": {
+			"applypatch-msg": "echo \"[Husky] applypatch-msg\"",
+			"pre-applypatch": "echo \"[Husky] pre-applypatch\"",
+			"post-applypatch": "echo \"[Husky] post-applypatch\"",
+			"pre-commit": "echo \"[Husky] pre-commit\""
+		}
+	},
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -35,46 +35,16 @@
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.10.0",
     "vite": "^5.4.9"
-  }
-   "name": "dish-balance",
-   "private": true,
-   "version": "0.0.0",
-   "type": "module",
-   "scripts": {
-      "dev": "vite",
-      "build": "tsc -b && vite build",
-      "lint": "eslint .",
-      "preview": "vite preview",
-      "prettier": "prettier . --write"
-   },
-   "dependencies": {
-      "react": "^18.3.1",
-      "react-dom": "^18.3.1"
-   },
-   
-   "lint-staged": {
-      "*.{js,jsx}": [
-         "prettier --write",
-         "eslint --fix",
-         "git add"
-      ],
-      "*.{html,css,less,ejs}": [
-         "prettier --write",
-         "git add"
-      ]
-   },
-   "devDependencies": {
-      "@eslint/js": "^9.13.0",
-      "@types/react": "^18.3.11",
-      "@types/react-dom": "^18.3.1",
-      "@vitejs/plugin-react": "^4.3.3",
-      "eslint": "^9.13.0",
-      "eslint-plugin-react-hooks": "^5.0.0",
-      "eslint-plugin-react-refresh": "^0.4.13",
-      "globals": "^15.11.0",
-      "prettier": "^3.3.3",
-      "typescript": "~5.6.2",
-      "typescript-eslint": "^8.10.0",
-      "vite": "^5.4.9"
-   }
+  },
+	"lint-staged": {
+		"*.{js,jsx}": [
+			"prettier --write",
+			"eslint --fix",
+			"git add"
+		],
+		"*.{html,css,less,ejs}": [
+			"prettier --write",
+			"git add"
+		]
+	}
 }

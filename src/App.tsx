@@ -1,12 +1,9 @@
-import './App.css'
+import './App.css';
+import { ThemeProvider } from '@mui/material';
+import { theme } from './shared/style/theme';
 
 function App() {
-   return (
-      <>
-         <h1>React</h1>
-         <div className="card"></div>
-      </>
-   )
+   return <ThemeProvider theme={theme}></ThemeProvider>;
 }
 
-export default App
+export default App;

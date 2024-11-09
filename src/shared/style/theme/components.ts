@@ -1,4 +1,3 @@
-import { Theme } from "@mui/material";
-import { Component } from "react";
+import { Components, Theme } from '@mui/material/styles';
 
-export const components: Component<Theme, 'component'> = {}
+export const components: Components<Omit<Theme, 'components'>> = {};

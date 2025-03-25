@@ -5,6 +5,7 @@ export const RegistrationPage = () => {
       <Box
          component='div'
          sx={{
+      
             position: 'absolute',
             top: '50%',
             left: '50%',

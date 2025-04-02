@@ -5,8 +5,8 @@ export const Header = () => {
       <header
          style={{
             backgroundColor: '#c2d7c2',
-            cursor: 'pointer',
-            height: '70px',
+            height: '10vh',
+            width: "100vw",
             display: 'flex',
             justifyContent: 'right',
             alignItems: 'center'

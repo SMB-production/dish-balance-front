@@ -4,34 +4,18 @@ export const Header = () => {
    return (
       <header
          style={{
-            backgroundColor: '#c2d7c2',
-            height: '10vh',
-            width: "100vw",
+            backgroundColor: '#b8e093',
+            height: '7vh',
+            width: '100%',
             display: 'flex',
             justifyContent: 'right',
-            alignItems: 'center'
+            alignItems: 'center',
          }}
-      >  
-         <Link
-            to='/'
-            style={{
-               verticalAlign: 'middle',
-               margin: '10px',
-               textDecoration: 'none',
-               fontSize: '20px'
-            }}
-         >
+      >
+         <Link to='/' style={{}}>
             На главную
          </Link>
-         <Link
-            to='/registration'
-            style={{
-               verticalAlign:'middle',
-               margin: '10px',
-               textDecoration: 'none',
-               fontSize: '20px'
-            }}
-         >
+         <Link to='/registration' style={{}}>
             Регистрация
          </Link>
       </header>

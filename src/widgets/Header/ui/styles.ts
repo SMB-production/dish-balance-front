@@ -8,7 +8,7 @@ export const headerStyles = {
 };
 
 export const linkStyles = {
-   all: 'unset',
+   textDecoration: 'none',
    marginRight: '1%',
    cursor: 'pointer',
 };

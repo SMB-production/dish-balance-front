@@ -1,17 +1,9 @@
 import { Link } from 'react-router-dom';
+import { headerStyles } from './styles.ts';
 
 export const Header = () => {
    return (
-      <header
-         style={{
-            backgroundColor: '#b8e093',
-            height: '7vh',
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'right',
-            alignItems: 'center',
-         }}
-      >
+      <header style={headerStyles}>
          <Link to='/' style={{}}>
             На главную
          </Link>

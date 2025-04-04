@@ -1,63 +1,26 @@
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
+import {
+   inputNameStyles,
+   parentStyles,
+   authFormStyles,
+   greetingTextStyles,
+   inputSurnameStyles,
+   inputEmailStyles,
+   authButtonStyles,
+} from './styles.ts';
 
 export const RegistrationPage = () => {
    return (
-      <Box
-         className='parent-box'
-         component='section'
-         sx={{
-            display: 'flex',
-            height: '100%',
-            width: '100%',
-            flexDirection: 'column',
-            alignItems: 'center',
-         }}
-      >
-         <Box
-            component='section'
-            sx={{
-               display: 'flex',
-               marginTop: '1.5%',
-               width: '90%',
-               height: '80%',
-
-               backgroundColor: '#b8e093',
-               borderRadius: '5%',
-               flexDirection: 'column',
-               alignItems: 'center',
-               position: 'absolute',
-            }}
-         >
-            <Box component='section' sx={{ fontSize: '90px' }}>
+      <Box className='parent-box' component='section' sx={parentStyles}>
+         <Box className='auth-form' component='section' sx={authFormStyles}>
+            <Box className='greeting-text' component='section' sx={greetingTextStyles}>
                Давайте познакомимся!
             </Box>
-            <Input
-               placeholder={'Ваше имя'}
-               sx={{ marginTop: '100px', width: '30%', height: '6%', border: '1px solid' }}
-            ></Input>
-            <Input
-               placeholder={'Ваша фамилия'}
-               sx={{ marginTop: '50px', width: '30%', height: '6%', border: '1px solid' }}
-            ></Input>
-            <Input
-               placeholder={'Ваша почта'}
-               sx={{ marginTop: '50px', width: '30%', height: '6%', border: '1px solid' }}
-            ></Input>
-            <Box
-               component='button'
-               sx={{
-                  width: '95%',
-                  height: '5%',
-                  display: 'flex',
-                  borderRadius: '20px',
-                  backgroundColor: '#8ec95a',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginTop: 'auto',
-                  marginBottom: '2%',
-               }}
-            >
+            <Input placeholder={'Ваше имя'} sx={inputNameStyles}></Input>
+            <Input placeholder={'Ваша фамилия'} sx={inputSurnameStyles}></Input>
+            <Input placeholder={'Ваша почта'} sx={inputEmailStyles}></Input>
+            <Box component='button' sx={authButtonStyles}>
                Зарегистрироваться!
             </Box>
          </Box>

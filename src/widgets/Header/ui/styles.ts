@@ -6,3 +6,9 @@ export const headerStyles = {
    justifyContent: 'right',
    alignItems: 'center',
 };
+
+export const linkStyles = {
+   all: 'unset',
+   marginRight: '1%',
+   cursor: 'pointer',
+};

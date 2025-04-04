@@ -32,8 +32,18 @@ export const RegistrationPage = () => {
             <Box component='section' sx={{ fontSize: '90px' }}>
                Давайте познакомимся!
             </Box>
-            <Input placeholder={'Ваше имя'} sx={{ marginTop: '100px', width: '30%' }}></Input>
-            <Input placeholder={'Ваша фамилия'} sx={{ marginTop: '50px', width: '30%' }}></Input>
+            <Input
+               placeholder={'Ваше имя'}
+               sx={{ marginTop: '100px', width: '30%', height: '6%', border: '1px solid' }}
+            ></Input>
+            <Input
+               placeholder={'Ваша фамилия'}
+               sx={{ marginTop: '50px', width: '30%', height: '6%', border: '1px solid' }}
+            ></Input>
+            <Input
+               placeholder={'Ваша почта'}
+               sx={{ marginTop: '50px', width: '30%', height: '6%', border: '1px solid' }}
+            ></Input>
             <Box
                component='button'
                sx={{

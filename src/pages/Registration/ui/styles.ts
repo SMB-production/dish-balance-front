@@ -25,6 +25,15 @@ export const greetingTextStyles: SxProps<Theme> = {
    fontSize: '90px',
 };
 
+export const formStyles: React.CSSProperties = {
+   display: 'flex',
+   flexDirection: 'column',
+   position: 'relative',
+   width: '90%',
+   height: '80%',
+   alignItems: 'center',
+};
+
 export const inputNameStyles: SxProps<Theme> = {
    marginTop: '100px',
    width: '30%',
@@ -32,14 +41,14 @@ export const inputNameStyles: SxProps<Theme> = {
    border: '1px solid',
 };
 
-export const inputSurnameStyles = {
+export const inputSurnameStyles: SxProps<Theme> = {
    marginTop: '50px',
    width: '30%',
    height: '6%',
    border: '1px solid',
 };
 
-export const inputEmailStyles = {
+export const inputEmailStyles: SxProps<Theme> = {
    marginTop: '50px',
    width: '30%',
    height: '6%',

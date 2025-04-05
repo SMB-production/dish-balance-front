@@ -32,11 +32,11 @@ export const RegistrationPage = () => {
       formState: { errors },
    } = methods;
 
-   const submit: SubmitHandler<AuthForm> = data => {
+   const handleSubmitForm: SubmitHandler<AuthForm> = data => {
       console.log(data);
    };
 
-   const error: SubmitErrorHandler<AuthForm> = data => {
+   const handleSubmitFormError: SubmitErrorHandler<AuthForm> = data => {
       console.log(data);
    };
 
@@ -47,27 +47,29 @@ export const RegistrationPage = () => {
                Давайте познакомимся!
             </Box>
             <FormProvider {...methods}>
-               <form onSubmit={handleSubmit(submit, error)} style={formStyles}>
-                  <Input
-                     placeholder={'Ваше имя'}
-                     sx={inputNameStyles}
-                     {...register('name', { required: true })}
-                     aria-invalid={!!errors.name}
-                  ></Input>
-                  <Input
-                     placeholder={'Ваша фамилия'}
-                     sx={inputSurnameStyles}
-                     {...register('age', { required: true })}
-                  ></Input>
-                  <Input
-                     placeholder={'Ваша почта'}
-                     sx={inputEmailStyles}
-                     {...register('email', { required: true })}
-                  ></Input>
-                  <Button type='submit' sx={authButtonStyles}>
-                     Регистрация
-                  </Button>
-               </form>
+               <Box sx={formStyles}>
+                  <form onSubmit={handleSubmit(handleSubmitForm, handleSubmitFormError)}>
+                     <Input
+                        placeholder={'Ваше имя'}
+                        sx={inputNameStyles}
+                        {...register('name', { required: true })}
+                        aria-invalid={!!errors.name}
+                     ></Input>
+                     <Input
+                        placeholder={'Ваша фамилия'}
+                        sx={inputSurnameStyles}
+                        {...register('age', { required: true })}
+                     ></Input>
+                     <Input
+                        placeholder={'Ваша почта'}
+                        sx={inputEmailStyles}
+                        {...register('email', { required: true })}
+                     ></Input>
+                     <Button type='submit' sx={authButtonStyles}>
+                        Регистрация
+                     </Button>
+                  </form>
+               </Box>
             </FormProvider>
          </Box>
       </Box>

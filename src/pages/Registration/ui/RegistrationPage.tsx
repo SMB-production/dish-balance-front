@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
-import { FormProvider } from 'react-hook-form';
+import { FormProvider, type SubmitErrorHandler } from 'react-hook-form';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import {
    inputNameStyles,
@@ -23,12 +23,20 @@ interface AuthForm {
 export const RegistrationPage = () => {
    const methods = useForm<AuthForm>({
       defaultValues: {
-         age: 18,
+         age: 0,
       },
    });
-   const { register, handleSubmit } = methods;
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+   } = methods;
 
    const submit: SubmitHandler<AuthForm> = data => {
+      console.log(data);
+   };
+
+   const error: SubmitErrorHandler<AuthForm> = data => {
       console.log(data);
    };
 
@@ -39,21 +47,22 @@ export const RegistrationPage = () => {
                Давайте познакомимся!
             </Box>
             <FormProvider {...methods}>
-               <form onSubmit={handleSubmit(submit)} style={formStyles}>
+               <form onSubmit={handleSubmit(submit, error)} style={formStyles}>
                   <Input
                      placeholder={'Ваше имя'}
                      sx={inputNameStyles}
-                     {...register('name')}
+                     {...register('name', { required: true })}
+                     aria-invalid={!!errors.name}
                   ></Input>
                   <Input
                      placeholder={'Ваша фамилия'}
                      sx={inputSurnameStyles}
-                     {...register('age')}
+                     {...register('age', { required: true })}
                   ></Input>
                   <Input
                      placeholder={'Ваша почта'}
                      sx={inputEmailStyles}
-                     {...register('email')}
+                     {...register('email', { required: true })}
                   ></Input>
                   <Button type='submit' sx={authButtonStyles}>
                      Регистрация

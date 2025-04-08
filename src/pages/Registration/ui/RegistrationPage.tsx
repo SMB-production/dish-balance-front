@@ -33,11 +33,9 @@ export const RegistrationPage = () => {
 
    return (
       <ThemeProvider theme={theme}>
-         <Box component='section' sx={parentStyles}>
-            <Box component='section' sx={authFormStyles}>
-               <Box component='section' sx={greetingTextStyles}>
-                  Давайте познакомимся!
-               </Box>
+         <Box sx={parentStyles}>
+            <Box sx={authFormStyles}>
+               <Box sx={greetingTextStyles}>Давайте познакомимся!</Box>
                <FormProvider {...methods}>
                   <form onSubmit={handleSubmit(handleSubmitForm, handleSubmitFormError)}>
                      <TextField

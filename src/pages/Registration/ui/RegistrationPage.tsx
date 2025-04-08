@@ -1,18 +1,9 @@
-import { Button } from '@mui/material';
+import { Button, TextField, ThemeProvider } from '@mui/material';
 import Box from '@mui/material/Box';
-import Input from '@mui/material/Input';
 import { FormProvider, type SubmitErrorHandler } from 'react-hook-form';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import {
-   inputNameStyles,
-   parentStyles,
-   authFormStyles,
-   greetingTextStyles,
-   inputSurnameStyles,
-   inputEmailStyles,
-   authButtonStyles,
-   formStyles,
-} from './styles.ts';
+import { theme } from '../../../shared/style/theme';
+import { parentStyles, authFormStyles, greetingTextStyles, inputValueStyles } from './styles.ts';
 
 interface AuthForm {
    name: string;
@@ -41,37 +32,47 @@ export const RegistrationPage = () => {
    };
 
    return (
-      <Box className='parent-box' component='section' sx={parentStyles}>
-         <Box className='auth-form' component='section' sx={authFormStyles}>
-            <Box className='greeting-text' component='section' sx={greetingTextStyles}>
-               Давайте познакомимся!
-            </Box>
-            <FormProvider {...methods}>
-               <Box sx={formStyles}>
+      <ThemeProvider theme={theme}>
+         <Box className='parent-box' component='section' sx={parentStyles}>
+            <Box className='auth-form' component='section' sx={authFormStyles}>
+               <Box className='greeting-text' component='section' sx={greetingTextStyles}>
+                  Давайте познакомимся!
+               </Box>
+               <FormProvider {...methods}>
                   <form onSubmit={handleSubmit(handleSubmitForm, handleSubmitFormError)}>
-                     <Input
-                        placeholder={'Ваше имя'}
-                        sx={inputNameStyles}
+                     <TextField
+                        slotProps={{ htmlInput: {} }}
+                        placeholder='Введите ваше имя'
+                        sx={inputValueStyles}
                         {...register('name', { required: true })}
                         aria-invalid={!!errors.name}
-                     ></Input>
-                     <Input
+                     />
+                     <TextField
+                        slotProps={{ htmlInput: {} }}
                         placeholder={'Ваша фамилия'}
-                        sx={inputSurnameStyles}
+                        sx={inputValueStyles}
                         {...register('age', { required: true })}
-                     ></Input>
-                     <Input
+                     />
+                     <TextField
+                        slotProps={{ htmlInput: {} }}
                         placeholder={'Ваша почта'}
-                        sx={inputEmailStyles}
+                        sx={inputValueStyles}
                         {...register('email', { required: true })}
-                     ></Input>
-                     <Button type='submit' sx={authButtonStyles}>
+                     />
+
+                     <Button
+                        variant='contained'
+                        color='primary'
+                        type='submit'
+                        sx={inputValueStyles}
+                        fullWidth={true}
+                     >
                         Регистрация
                      </Button>
                   </form>
-               </Box>
-            </FormProvider>
+               </FormProvider>
+            </Box>
          </Box>
-      </Box>
+      </ThemeProvider>
    );
 };

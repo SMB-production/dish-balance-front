@@ -33,28 +33,25 @@ export const RegistrationPage = () => {
 
    return (
       <ThemeProvider theme={theme}>
-         <Box className='parent-box' component='section' sx={parentStyles}>
-            <Box className='auth-form' component='section' sx={authFormStyles}>
-               <Box className='greeting-text' component='section' sx={greetingTextStyles}>
+         <Box component='section' sx={parentStyles}>
+            <Box component='section' sx={authFormStyles}>
+               <Box component='section' sx={greetingTextStyles}>
                   Давайте познакомимся!
                </Box>
                <FormProvider {...methods}>
                   <form onSubmit={handleSubmit(handleSubmitForm, handleSubmitFormError)}>
                      <TextField
-                        slotProps={{ htmlInput: {} }}
                         placeholder='Введите ваше имя'
                         sx={inputValueStyles}
                         {...register('name', { required: true })}
                         aria-invalid={!!errors.name}
                      />
                      <TextField
-                        slotProps={{ htmlInput: {} }}
                         placeholder={'Ваша фамилия'}
                         sx={inputValueStyles}
                         {...register('age', { required: true })}
                      />
                      <TextField
-                        slotProps={{ htmlInput: {} }}
                         placeholder={'Ваша почта'}
                         sx={inputValueStyles}
                         {...register('email', { required: true })}

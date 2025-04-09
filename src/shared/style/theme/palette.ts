@@ -2,10 +2,10 @@ import { type PaletteOptions } from '@mui/material/styles';
 
 export const palette: PaletteOptions = {
    primary: {
-      main: '#c9f4a2',
+      main: '#a2f4ab',
    },
    secondary: {
-      main: '#a2f4ab',
+      main: '#88a964',
    },
    info: {
       main: '#d5a2f4',

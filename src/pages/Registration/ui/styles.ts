@@ -14,7 +14,7 @@ export const authFormStyles: SxProps<Theme> = {
    marginTop: '1.5%',
    width: '90%',
    height: '80%',
-   backgroundColor: '#c9f4a2',
+   backgroundColor: '#b8e093',
    borderRadius: '5%',
    flexDirection: 'column',
    alignItems: 'center',

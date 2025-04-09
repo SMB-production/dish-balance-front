@@ -57,7 +57,7 @@ export const RegistrationPage = () => {
 
                      <Button
                         variant='contained'
-                        color='primary'
+                        color='secondary'
                         type='submit'
                         sx={inputValueStyles}
                         fullWidth={true}

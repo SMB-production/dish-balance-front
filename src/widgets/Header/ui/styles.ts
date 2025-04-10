@@ -5,3 +5,7 @@ export const headerLabelName: SxProps<Theme> = {
    flexGrow: 1,
    ml: '10px',
 };
+
+export const buttonMargin: SxProps<Theme> = {
+   mr: '20px',
+};

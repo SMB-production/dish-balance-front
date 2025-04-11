@@ -1,16 +1,23 @@
-import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
-import { headerStyles, linkStyles } from './styles.ts';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { LinkedButton } from '../../../shared/LinkedButton';
+import { buttonMargin, headerLabelName } from './styles.ts';
 
 export const Header = () => {
    return (
-      <Box component='header' sx={headerStyles}>
-         <Link to='/' style={linkStyles}>
-            На главную
-         </Link>
-         <Link to='/registration' style={linkStyles}>
-            Регистрация
-         </Link>
-      </Box>
+      <AppBar position={'static'} sx={{ backgroundColor: '#b8e093' }}>
+         <Toolbar>
+            <IconButton>
+               {/* Нереализованный функционал, необходимо доделать */}
+               <MenuIcon />
+            </IconButton>
+            <Typography variant={'h5'} sx={headerLabelName}>
+               SM DISH
+            </Typography>
+
+            <LinkedButton route='/' text='Главная' sx={buttonMargin} />
+            <LinkedButton route='/registration' text='Регистрация' sx={buttonMargin} />
+         </Toolbar>
+      </AppBar>
    );
 };

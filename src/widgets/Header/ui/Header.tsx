@@ -1,9 +1,13 @@
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useTranslation } from 'react-i18next';
 import { LinkedButton } from '../../../shared/LinkedButton';
 import { buttonMargin, headerLabelName } from './styles.ts';
+import { LangSwitcher } from '../../../shared/LangSwitcher/ui/LangSwitcher.tsx';
 
 export const Header = () => {
+   const { t } = useTranslation();
+
    return (
       <AppBar position={'static'} sx={{ backgroundColor: '#b8e093' }}>
          <Toolbar>
@@ -15,9 +19,23 @@ export const Header = () => {
                SM DISH
             </Typography>
 
-            <LinkedButton route='/' text='Главная' sx={buttonMargin} />
-            <LinkedButton route='/registration' text='Регистрация' sx={buttonMargin} />
+            <LinkedButton route='/' text={t('Главная')} sx={buttonMargin} />
+            <LinkedButton route='/registration' text={t('Регистрация')} sx={buttonMargin} />
+            <LangSwitcher />
          </Toolbar>
       </AppBar>
    );
 };
+
+// const Component = () => {
+//    const { t, i18n } = useTranslation();
+//
+//
+//
+//    return (
+//       <div>
+//          <button onClick={toggleLanguage}>{t('Перевод')}</button>
+//          {t('Тестовый пример')}
+//       </div>
+//    );
+// };

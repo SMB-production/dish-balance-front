@@ -11,7 +11,7 @@ import './shared/config/i18next/i18n';
 
 function App() {
    return (
-      <Suspense fallback=''>
+      <Suspense fallback='loading'>
          <ThemeProvider theme={theme}>
             <CssBaseline />
             <Header />

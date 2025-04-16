@@ -6,7 +6,7 @@ import { buttonMargin, headerLabelName } from './styles.ts';
 import { LangSwitcher } from '../../../shared/LangSwitcher/ui/LangSwitcher.tsx';
 
 export const Header = () => {
-   const { t } = useTranslation();
+   const { t } = useTranslation('header');
 
    return (
       <AppBar position={'static'} sx={{ backgroundColor: '#b8e093' }}>
@@ -26,16 +26,3 @@ export const Header = () => {
       </AppBar>
    );
 };
-
-// const Component = () => {
-//    const { t, i18n } = useTranslation();
-//
-//
-//
-//    return (
-//       <div>
-//          <button onClick={toggleLanguage}>{t('Перевод')}</button>
-//          {t('Тестовый пример')}
-//       </div>
-//    );
-// };

@@ -10,15 +10,15 @@ export const parentStyles: SxProps<Theme> = {
 };
 
 export const authFormStyles: SxProps<Theme> = {
-   display: 'flex',
-   marginTop: '1.5%',
-   width: '90%',
-   height: '80%',
-   backgroundColor: '#b8e093',
-   borderRadius: '5%',
-   flexDirection: 'column',
-   alignItems: 'center',
-   position: 'absolute',
+   'display': 'flex',
+   'marginTop': '1.5%',
+   'width': '90%',
+   'height': '80%',
+   'backgroundColor': '#b8e093',
+   'borderRadius': '5%',
+   'flexDirection': 'column',
+   'alignItems': 'center',
+   'position': 'absolute',
    '& form': {
       display: 'flex',
       flexDirection: 'column',
@@ -30,7 +30,7 @@ export const authFormStyles: SxProps<Theme> = {
 };
 
 export const greetingTextStyles: SxProps<Theme> = {
-   fontSize: '90px',
+   fontSize: '20px',
 };
 
 export const inputValueStyles: SxProps<Theme> = {

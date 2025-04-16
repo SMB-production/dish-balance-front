@@ -2,6 +2,7 @@ import { Button, TextField, ThemeProvider } from '@mui/material';
 import Box from '@mui/material/Box';
 import { FormProvider, type SubmitErrorHandler } from 'react-hook-form';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../../../shared/style/theme';
 import { parentStyles, authFormStyles, greetingTextStyles, inputValueStyles } from './styles.ts';
 
@@ -12,11 +13,7 @@ interface AuthForm {
 }
 
 export const RegistrationPage = () => {
-   const methods = useForm<AuthForm>({
-      defaultValues: {
-         age: 0,
-      },
-   });
+   const methods = useForm<AuthForm>({});
    const {
       register,
       handleSubmit,
@@ -31,26 +28,28 @@ export const RegistrationPage = () => {
       console.log(data);
    };
 
+   const { t } = useTranslation('registration');
+
    return (
       <ThemeProvider theme={theme}>
          <Box sx={parentStyles}>
             <Box sx={authFormStyles}>
-               <Box sx={greetingTextStyles}>Давайте познакомимся!</Box>
+               <Box sx={greetingTextStyles}>{t('Давайте познакомимся!')}</Box>
                <FormProvider {...methods}>
                   <form onSubmit={handleSubmit(handleSubmitForm, handleSubmitFormError)}>
                      <TextField
-                        placeholder='Введите ваше имя'
+                        placeholder={t('Введите ваше имя')}
                         sx={inputValueStyles}
                         {...register('name', { required: true })}
                         aria-invalid={!!errors.name}
                      />
                      <TextField
-                        placeholder={'Ваша фамилия'}
+                        placeholder={t('Введите ваш возраст')}
                         sx={inputValueStyles}
                         {...register('age', { required: true })}
                      />
                      <TextField
-                        placeholder={'Ваша почта'}
+                        placeholder={t('Введите вашу почту')}
                         sx={inputValueStyles}
                         {...register('email', { required: true })}
                      />
@@ -62,7 +61,7 @@ export const RegistrationPage = () => {
                         sx={inputValueStyles}
                         fullWidth={true}
                      >
-                        Регистрация
+                        {t('Регистрация')}
                      </Button>
                   </form>
                </FormProvider>

@@ -13,7 +13,7 @@ interface AuthForm {
 }
 
 export const RegistrationPage = () => {
-   const methods = useForm<AuthForm>({});
+   const methods = useForm<AuthForm>();
    const {
       register,
       handleSubmit,

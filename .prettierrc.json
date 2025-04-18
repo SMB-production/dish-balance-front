@@ -8,5 +8,5 @@
    "tabWidth": 3,
    "arrowParens": "avoid",
    "endOfLine": "lf",
-   "quoteProps": "consistent"
+   "quoteProps": "as-needed"
 }

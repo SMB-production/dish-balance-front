@@ -19,7 +19,7 @@ export const authFormStyles: SxProps<Theme> = {
    flexDirection: 'column',
    alignItems: 'center',
    position: 'absolute',
-   '&form': {
+   '& form': {
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',

@@ -6,7 +6,7 @@ import { buttonMargin, headerLabelName } from './styles.ts';
 import { LangSwitcher } from '../../../shared/LangSwitcher/ui/LangSwitcher.tsx';
 
 export const Header = () => {
-   const { t } = useTranslation('header');
+   const { t } = useTranslation('translation');
 
    return (
       <AppBar position={'static'} sx={{ backgroundColor: '#b8e093' }}>

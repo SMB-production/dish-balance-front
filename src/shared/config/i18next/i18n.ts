@@ -9,11 +9,17 @@ i18n
    .use(initReactI18next)
    .init({
       debug: true,
-      lng: 'ru',
+      fallbackLng: 'en',
+      supportedLngs: ['en', 'ru'],
       ns: ['main', 'registration'],
-      fallbackLng: 'ru',
+      defaultNS: 'translation',
       backend: {
          loadPath: '../../../../public/locales/{{lng}}/{{ns}}.json',
+      },
+      detection: {
+         order: ['navigator', 'localStorage'],
+         caches: ['localStorage', 'cookie'],
+         lookupLocalStorage: 'i18nextLng',
       },
    });
 

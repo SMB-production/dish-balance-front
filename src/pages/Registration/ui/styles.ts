@@ -30,7 +30,7 @@ export const authFormStyles: SxProps<Theme> = {
 };
 
 export const greetingTextStyles: SxProps<Theme> = {
-   fontSize: '90px',
+   fontSize: '20px',
 };
 
 export const inputValueStyles: SxProps<Theme> = {

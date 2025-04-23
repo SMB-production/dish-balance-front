@@ -3,17 +3,16 @@
 //
 // interface InputProductFormProps {
 //    requiredMessage: string;
+//    ingredientProperty: string;
 // }
 //
 // export const InputProductForm: React.FC<InputProductFormProps> = props => {
 //    return (
 //       <TextField
-//          {...register(`ingredients.${index}.fatPer100g`, {
-//             required: '',
-//          })}
-//          sx={{ width: '400px' }}
-//          type='number'
-//          variant='outlined'
+//          type={'number'}
+//          placeholder='Введите белки ингредиента'
+//          {...register(`ingredients.${index}.${props.ingredientProperty}`)}
+//          sx={{ display: 'block', mt: '10px' }}
 //       />
 //    );
 // };

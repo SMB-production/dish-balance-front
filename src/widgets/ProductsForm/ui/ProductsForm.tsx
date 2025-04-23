@@ -1,6 +1,6 @@
-import { TextField, ThemeProvider, Button, Typography } from '@mui/material';
-import { type SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
-import { theme } from '../../../shared/style/theme';
+import { Button, TextField } from '@mui/material';
+import Box from '@mui/material/Box';
+import { useForm, SubmitHandler, useFieldArray } from 'react-hook-form';
 
 type Ingredient = {
    name: string;
@@ -16,9 +16,12 @@ type ProductsForm = {
    ingredients: Ingredient[];
 };
 
+const onSubmitHandler: SubmitHandler<ProductsForm> = data => {
+   console.log(data);
+};
+
 export const ProductsForm = () => {
-   const { register, handleSubmit, control, reset } = useForm<ProductsForm>({
-      mode: 'onChange',
+   const { register, handleSubmit, control } = useForm<ProductsForm>({
       defaultValues: {
          name: '',
          ingredients: [
@@ -33,38 +36,114 @@ export const ProductsForm = () => {
          ],
       },
    });
-   const { fields, remove } = useFieldArray<ProductsForm>({ name: 'ingredients', control });
-
-   const handleSubmitForm: SubmitHandler<ProductsForm> = data => {
-      console.log(data);
-      reset();
-   };
+   const { fields, remove, append } = useFieldArray<ProductsForm>({ control, name: 'ingredients' });
 
    return (
-      <ThemeProvider theme={theme}>
-         <form onSubmit={handleSubmit(handleSubmitForm)}>
-            {fields.map((item, index) => {
-               return (
-                  <section key={item.id}>
-                     <Typography>Название</Typography>
-                     <TextField {...register(`ingredients.${index}.name`, { required: true })} />
+      <Box
+         sx={{
+            display: 'flex',
+            height: '100%',
+            width: '100%',
+            mt: '2%',
+            justifyContent: 'center',
+         }}
+      >
+         <Box
+            sx={{
+               display: 'flex',
+               height: '80%',
+               width: '90%',
+               borderRadius: '10px',
+               backgroundColor: '#b8e093',
+               alignItems: 'center',
+               justifyContent: 'center',
+            }}
+         >
+            <form onSubmit={handleSubmit(onSubmitHandler)}>
+               <TextField
+                  {...register('name')}
+                  sx={{ display: 'block' }}
+                  placeholder={'Введите название блюда'}
+               />
+               {fields.map((item, index) => {
+                  return (
+                     <Box key={item.id}>
+                        <TextField
+                           placeholder='Введите название ингредиента'
+                           {...register(`ingredients.${index}.name`)}
+                           sx={{ display: 'block', mt: '10px' }}
+                        />
 
-                     <Typography>Вес</Typography>
-                     <TextField
-                        type={'number'}
-                        {...register(`ingredients.${index}.weight`, { required: true })}
-                     />
+                        <TextField
+                           type={'number'}
+                           placeholder='Введите вес ингредиента'
+                           {...register(`ingredients.${index}.weight`)}
+                           sx={{ display: 'block', mt: '10px' }}
+                        />
 
-                     <Button type='button' variant={'contained'} onClick={() => remove(index)}>
-                        Delete
-                     </Button>
-                  </section>
-               );
-            })}
-            <Button type={'submit'} variant={'contained'}>
-               Отправит
-            </Button>
-         </form>
-      </ThemeProvider>
+                        <TextField
+                           type={'number'}
+                           placeholder='Введите калории ингредиента'
+                           {...register(`ingredients.${index}.caloriesPer100g`)}
+                           sx={{ display: 'block', mt: '10px' }}
+                        />
+
+                        <TextField
+                           type={'number'}
+                           placeholder='Введите белки ингредиента'
+                           {...register(`ingredients.${index}.proteinPer100g`)}
+                           sx={{ display: 'block', mt: '10px' }}
+                        />
+
+                        <TextField
+                           type={'number'}
+                           placeholder='Введите белки ингредиента'
+                           {...register(`ingredients.${index}.fatPer100g`)}
+                           sx={{ display: 'block', mt: '10px' }}
+                        />
+
+                        <TextField
+                           type={'number'}
+                           placeholder='Введите углеводы ингредиента'
+                           {...register(`ingredients.${index}.carbohydratesPer100g`)}
+                           sx={{ display: 'block', mt: '10px' }}
+                        />
+
+                        <Button
+                           type='button'
+                           onClick={() => remove(index)}
+                           variant={'contained'}
+                           sx={{ display: 'block', mb: '10px' }}
+                        >
+                           Delete
+                        </Button>
+                     </Box>
+                  );
+               })}
+
+               <Button
+                  type={'button'}
+                  variant={'contained'}
+                  sx={{ display: 'block' }}
+                  onClick={() => {
+                     append({
+                        name: '',
+                        weight: 0,
+                        caloriesPer100g: 0,
+                        proteinPer100g: 0,
+                        fatPer100g: 0,
+                        carbohydratesPer100g: 0,
+                     });
+                  }}
+               >
+                  Добавить ингредиент
+               </Button>
+
+               <Button type={'submit'} variant={'contained'} sx={{ display: 'block', mt: '10px' }}>
+                  Отправить
+               </Button>
+            </form>
+         </Box>
+      </Box>
    );
 };

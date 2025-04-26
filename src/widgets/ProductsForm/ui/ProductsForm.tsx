@@ -1,5 +1,6 @@
 import { Button, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
+import axios from 'axios';
 import { useForm, SubmitHandler, useFieldArray } from 'react-hook-form';
 
 type Ingredient = {
@@ -16,7 +17,12 @@ type ProductsForm = {
    ingredients: Ingredient[];
 };
 
+const POST_PRODUCT_API = 'http://localhost:5000/api/cpfc';
+
 const onSubmitHandler: SubmitHandler<ProductsForm> = data => {
+   axios.post(`${POST_PRODUCT_API}`).then(response => {
+      console.log(response);
+   });
    console.log(data);
 };
 

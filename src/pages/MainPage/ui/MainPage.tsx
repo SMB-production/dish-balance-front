@@ -1,7 +1,5 @@
-import { useTranslation } from 'react-i18next';
+import { ProductsForm } from '../../../widgets/ProductsForm';
 
 export const MainPage = () => {
-   const { t } = useTranslation('main');
-
-   return <div>{t('Это главная страница')};</div>;
+   return <ProductsForm />;
 };

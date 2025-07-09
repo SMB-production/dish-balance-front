@@ -1,15 +1,11 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
-
 import { Suspense, useState } from 'react';
 import { useForm, useFieldArray, FormProvider } from 'react-hook-form';
 import { CpfcPostRequest } from '../../../shared/api/productsApi.ts';
 import { InputIngredientForm } from '../../../shared/InfutProductForm';
-import {
-   CpfcParentBox,
-   CpfcResonseWindow,
-   CpfcTypographyBox,
-} from '../../CalculateCpfcWindow/ui/styles.ts';
+import { CalculateCpfcWindow } from '../../CalculateCpfcWindow';
+
 import {
    addIngredientButton,
    deleteButton,
@@ -136,24 +132,17 @@ export const CpfcProductsForm = () => {
                   </Button>
                </form>
 
-               <Suspense>
-                  <Box sx={CpfcParentBox}>
-                     <Box sx={CpfcTypographyBox}>
-                        <Typography>В вашем блюде {cpfcObject?.name} на 100 грамм:</Typography>
-                     </Box>
-                     <Box sx={CpfcResonseWindow}>
-                        <div>{cpfcObject?.cpfc.protein} грамм белка</div>
-                     </Box>
-                     <Box sx={CpfcResonseWindow}>
-                        <div>{cpfcObject?.cpfc.fat} грамм жиров</div>
-                     </Box>
-                     <Box sx={CpfcResonseWindow}>
-                        <div>{cpfcObject?.cpfc.carbohydrates} грамм углеводов</div>
-                     </Box>
-                  </Box>
-               </Suspense>
+               {cpfcObject && (
+                  <Suspense fallback={<div>Загрузка результатов...</div>}>
+                     <CalculateCpfcWindow cpfcObject={cpfcObject} />
+                  </Suspense>
+               )}
             </FormProvider>
          </Box>
       </Box>
    );
 };
+
+// <Suspense>
+//    <CalculateCpfcWindow cpfcObject={cpfcObject}></CalculateCpfcWindow>
+// </Suspense>

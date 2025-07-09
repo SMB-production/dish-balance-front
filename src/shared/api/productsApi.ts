@@ -1,10 +1,10 @@
 import axios from 'axios';
-import type { ProductsForm } from '../../widgets/ProductsForm';
+import type { cpfcFormType } from '../globalTypes/cpfcFormTypes/cpfcFormTypes.ts';
 
 const api = axios.create({
    baseURL: 'http://localhost:5000/api',
 });
 
-export function CpfcPostRequest(data: typeof ProductsForm) {
-   return api.post<ProductsForm>('/cpfc', data);
+export function CpfcPostRequest(data: cpfcFormType) {
+   return api.post<cpfcFormType>('/cpfc', data);
 }

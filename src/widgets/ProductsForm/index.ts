@@ -1,3 +1,3 @@
-import { ProductsForm } from './ui/ProductsForm.tsx';
+import { CpfcProductsForm } from './ui/ProductsForm.tsx';
 
-export { ProductsForm };
+export { CpfcProductsForm };

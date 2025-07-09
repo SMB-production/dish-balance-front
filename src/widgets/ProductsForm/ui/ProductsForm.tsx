@@ -1,33 +1,34 @@
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import axios from 'axios';
-import { useForm, SubmitHandler, useFieldArray } from 'react-hook-form';
 
-type Ingredient = {
-   name: string;
-   weight: number;
-   caloriesPer100g: number;
-   proteinPer100g: number;
-   fatPer100g: number;
-   carbohydratesPer100g: number;
-};
+import { Suspense, useState } from 'react';
+import { useForm, useFieldArray, FormProvider } from 'react-hook-form';
+import { CpfcPostRequest } from '../../../shared/api/productsApi.ts';
+import { InputIngredientForm } from '../../../shared/InfutProductForm';
+import {
+   CpfcParentBox,
+   CpfcResonseWindow,
+   CpfcTypographyBox,
+} from '../../CalculateCpfcWindow/ui/styles.ts';
+import {
+   addIngredientButton,
+   deleteButton,
+   parentBox,
+   productFormStyles,
+   submitButton,
+} from './styles.ts';
+import type { cpfcFormType } from '../../../shared/globalTypes/cpfcFormTypes/cpfcFormTypes.ts';
 
-type ProductsForm = {
-   name: string;
-   ingredients: Ingredient[];
-};
+export const CpfcProductsForm = () => {
+   const [cpfcObject, setCpfcObject] = useState<cpfcFormType | null>(null);
 
-const POST_PRODUCT_API = 'http://localhost:5000/api/cpfc';
+   async function onSubmitHandler(data: cpfcFormType) {
+      CpfcPostRequest(data).then(response => {
+         setCpfcObject(response.data);
+      });
+   }
 
-const onSubmitHandler: SubmitHandler<ProductsForm> = data => {
-   axios.post(`${POST_PRODUCT_API}`).then(response => {
-      console.log(response);
-   });
-   console.log(data);
-};
-
-export const ProductsForm = () => {
-   const { register, handleSubmit, control } = useForm<ProductsForm>({
+   const methods = useForm<cpfcFormType>({
       defaultValues: {
          name: '',
          ingredients: [
@@ -42,113 +43,116 @@ export const ProductsForm = () => {
          ],
       },
    });
-   const { fields, remove, append } = useFieldArray<ProductsForm>({ control, name: 'ingredients' });
+   const { register, handleSubmit, control } = methods;
+   const { fields, remove, append } = useFieldArray<cpfcFormType>({ control, name: 'ingredients' });
 
    return (
-      <Box
-         sx={{
-            display: 'flex',
-            height: '100%',
-            width: '100%',
-            mt: '2%',
-            justifyContent: 'center',
-         }}
-      >
-         <Box
-            sx={{
-               display: 'flex',
-               height: '80%',
-               width: '90%',
-               borderRadius: '10px',
-               backgroundColor: '#b8e093',
-               alignItems: 'center',
-               justifyContent: 'center',
-            }}
-         >
-            <form onSubmit={handleSubmit(onSubmitHandler)}>
-               <TextField
-                  {...register('name')}
-                  sx={{ display: 'block' }}
-                  placeholder={'Введите название блюда'}
-               />
-               {fields.map((item, index) => {
-                  return (
-                     <Box key={item.id}>
-                        <TextField
-                           placeholder='Введите название ингредиента'
-                           {...register(`ingredients.${index}.name`)}
-                           sx={{ display: 'block', mt: '10px' }}
-                        />
+      <Box className={'parentBox'} sx={parentBox}>
+         <Box sx={productFormStyles}>
+            <FormProvider {...methods}>
+               <form onSubmit={handleSubmit(onSubmitHandler)}>
+                  <TextField
+                     {...register('name')}
+                     sx={{ display: 'block' }}
+                     placeholder={'Введите название блюда'}
+                  />
+                  {fields.map((item, index) => {
+                     return (
+                        <Box key={item.id}>
+                           <InputIngredientForm
+                              type={'text'}
+                              characteristic={'название'}
+                              index={index}
+                              name={'name'}
+                           />
 
-                        <TextField
-                           type={'number'}
-                           placeholder='Введите вес ингредиента'
-                           {...register(`ingredients.${index}.weight`)}
-                           sx={{ display: 'block', mt: '10px' }}
-                        />
+                           <InputIngredientForm
+                              type={'number'}
+                              characteristic={'вес'}
+                              index={index}
+                              name={'weight'}
+                           />
 
-                        <TextField
-                           type={'number'}
-                           placeholder='Введите калории ингредиента'
-                           {...register(`ingredients.${index}.caloriesPer100g`)}
-                           sx={{ display: 'block', mt: '10px' }}
-                        />
+                           <InputIngredientForm
+                              type={'number'}
+                              characteristic={'калории'}
+                              index={index}
+                              name={'caloriesPer100g'}
+                           />
 
-                        <TextField
-                           type={'number'}
-                           placeholder='Введите белки ингредиента'
-                           {...register(`ingredients.${index}.proteinPer100g`)}
-                           sx={{ display: 'block', mt: '10px' }}
-                        />
+                           <InputIngredientForm
+                              type={'number'}
+                              characteristic={'белки'}
+                              index={index}
+                              name={'proteinPer100g'}
+                           />
 
-                        <TextField
-                           type={'number'}
-                           placeholder='Введите белки ингредиента'
-                           {...register(`ingredients.${index}.fatPer100g`)}
-                           sx={{ display: 'block', mt: '10px' }}
-                        />
+                           <InputIngredientForm
+                              type={'number'}
+                              characteristic={'жиры'}
+                              index={index}
+                              name={'fatPer100g'}
+                           />
 
-                        <TextField
-                           type={'number'}
-                           placeholder='Введите углеводы ингредиента'
-                           {...register(`ingredients.${index}.carbohydratesPer100g`)}
-                           sx={{ display: 'block', mt: '10px' }}
-                        />
+                           <InputIngredientForm
+                              type={'number'}
+                              characteristic={'углеводы'}
+                              index={index}
+                              name={'carbohydratesPer100g'}
+                           />
 
-                        <Button
-                           type='button'
-                           onClick={() => remove(index)}
-                           variant={'contained'}
-                           sx={{ display: 'block', mb: '10px' }}
-                        >
-                           Delete
-                        </Button>
+                           <Button
+                              type='button'
+                              onClick={() => remove(index)}
+                              variant={'contained'}
+                              sx={deleteButton}
+                           >
+                              Delete
+                           </Button>
+                        </Box>
+                     );
+                  })}
+
+                  <Button
+                     type={'button'}
+                     variant={'contained'}
+                     sx={addIngredientButton}
+                     onClick={() => {
+                        append({
+                           name: '',
+                           weight: 0,
+                           caloriesPer100g: 0,
+                           proteinPer100g: 0,
+                           fatPer100g: 0,
+                           carbohydratesPer100g: 0,
+                        });
+                     }}
+                  >
+                     Добавить ингредиент
+                  </Button>
+
+                  <Button type={'submit'} variant={'contained'} sx={submitButton}>
+                     Отправить
+                  </Button>
+               </form>
+
+               <Suspense>
+                  <Box sx={CpfcParentBox}>
+                     <Box sx={CpfcTypographyBox}>
+                        <Typography>В вашем блюде {cpfcObject?.name} на 100 грамм:</Typography>
                      </Box>
-                  );
-               })}
-
-               <Button
-                  type={'button'}
-                  variant={'contained'}
-                  sx={{ display: 'block' }}
-                  onClick={() => {
-                     append({
-                        name: '',
-                        weight: 0,
-                        caloriesPer100g: 0,
-                        proteinPer100g: 0,
-                        fatPer100g: 0,
-                        carbohydratesPer100g: 0,
-                     });
-                  }}
-               >
-                  Добавить ингредиент
-               </Button>
-
-               <Button type={'submit'} variant={'contained'} sx={{ display: 'block', mt: '10px' }}>
-                  Отправить
-               </Button>
-            </form>
+                     <Box sx={CpfcResonseWindow}>
+                        <div>{cpfcObject?.cpfc.protein} грамм белка</div>
+                     </Box>
+                     <Box sx={CpfcResonseWindow}>
+                        <div>{cpfcObject?.cpfc.fat} грамм жиров</div>
+                     </Box>
+                     <Box sx={CpfcResonseWindow}>
+                        <div>{cpfcObject?.cpfc.carbohydrates} грамм углеводов</div>
+                     </Box>
+                  </Box>
+               </Suspense>
+            </FormProvider>
          </Box>
       </Box>
    );

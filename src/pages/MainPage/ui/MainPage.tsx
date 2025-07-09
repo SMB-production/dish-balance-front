@@ -1,5 +1,5 @@
-import { ProductsForm } from '../../../widgets/ProductsForm';
+import { CpfcProductsForm } from '../../../widgets/ProductsForm';
 
 export const MainPage = () => {
-   return <ProductsForm />;
+   return <CpfcProductsForm />;
 };

@@ -3,7 +3,8 @@ import type { Theme } from '@mui/material/styles';
 
 export const parentBox: SxProps<Theme> = {
    display: 'flex',
-   height: '100%',
+   maxHeight: '100%',
+   height: 'auto',
    width: '100%',
    mt: '2%',
    justifyContent: 'center',
@@ -17,6 +18,8 @@ export const productFormStyles: SxProps<Theme> = {
    backgroundColor: '#b8e093',
    alignItems: 'center',
    justifyContent: 'center',
+   pt: '2%',
+   pb: '2%',
 };
 
 export const deleteButton: SxProps<Theme> = { display: 'block', mb: '10px' };

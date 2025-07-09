@@ -142,7 +142,3 @@ export const CpfcProductsForm = () => {
       </Box>
    );
 };
-
-// <Suspense>
-//    <CalculateCpfcWindow cpfcObject={cpfcObject}></CalculateCpfcWindow>
-// </Suspense>

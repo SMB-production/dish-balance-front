@@ -8,6 +8,7 @@ import { Header } from './widgets/Header';
 import CssBaseline from '@mui/material/CssBaseline';
 import './app/styles/globalStyles.css';
 import './shared/config/i18next/i18n';
+import { LogInPage } from './pages/LogInPage';
 
 function App() {
    return (
@@ -18,6 +19,7 @@ function App() {
             <Routes>
                <Route path='/' element={<MainPage />} />
                <Route path='/registration' element={<RegistrationPage />} />
+               <Route path='/login' element={<LogInPage />} />
             </Routes>
          </ThemeProvider>
       </Suspense>

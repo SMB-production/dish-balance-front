@@ -1,26 +1,27 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, IconButton, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTranslation } from 'react-i18next';
 import { LinkedButton } from '../../../shared/LinkedButton';
-import { buttonMargin, headerLabelName } from './styles.ts';
+import { buttonMargin } from './styles.ts';
 import { LangSwitcher } from '../../../shared/LangSwitcher/ui/LangSwitcher.tsx';
 
 export const Header = () => {
    const { t } = useTranslation('translation');
 
    return (
-      <AppBar position={'static'} sx={{ backgroundColor: '#b8e093' }}>
+      <AppBar
+         position={'static'}
+         sx={{ backgroundColor: '#374151', justifyContent: 'space-between' }}
+      >
          <Toolbar>
-            <IconButton>
+            <IconButton sx={{}}>
                {/* Нереализованный функционал, необходимо доделать */}
                <MenuIcon />
             </IconButton>
-            <Typography variant={'h5'} sx={headerLabelName}>
-               SM DISH
-            </Typography>
 
             <LinkedButton route='/' text={t('Главная')} sx={buttonMargin} />
             <LinkedButton route='/registration' text={t('Регистрация')} sx={buttonMargin} />
+            <LinkedButton route='/login' text={t('Вход')} sx={buttonMargin} />
             <LangSwitcher />
          </Toolbar>
       </AppBar>

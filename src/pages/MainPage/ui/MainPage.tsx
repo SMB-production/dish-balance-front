@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box';
 import {
+   addYourDishTypography,
    cpfcForm,
    cpfcFormContainer,
    dishesFormContainer,
@@ -16,31 +17,29 @@ import DataSaverOffIcon from '@mui/icons-material/DataSaverOff';
 
 export const MainPage = () => {
    return (
-      <Box component={'div'} className='mainPageParentContainer' sx={mainPageParentContainer}>
-         <Box className='dishesFormContainer' sx={dishesFormContainer}>
-            <Box className='headerContainer' sx={headerContainer}>
+      <Box sx={mainPageParentContainer}>
+         <Box sx={dishesFormContainer}>
+            <Box sx={headerContainer}>
                <Header />
             </Box>
-            <Box className='greetingTextAndGraphContainer' sx={greetingTextAndGraphContainer}>
-               <Typography className='greetingTextContainer' sx={greetingTextContainer}>
+            <Box sx={greetingTextAndGraphContainer}>
+               <Typography sx={greetingTextContainer}>
                   Cледи за своим питанием
                   <br /> легко и удобно!
                </Typography>
-               <Box className='ringGraphContainer' sx={ringGraphContainer}>
+               <Box sx={ringGraphContainer}>
                   <DataSaverOffIcon fontSize='large' />
                </Box>
             </Box>
 
-            <Box className='cpfcFormContainer' sx={cpfcFormContainer}>
-               <Typography fontSize='25px' sx={{ mb: '20px', fontWeight: '600' }}>
-                  Добавьте свое блюдо
-               </Typography>
-               <Box className='cpfcForm' sx={cpfcForm}>
-                  <TextField id='outlined-helperText' label='Название блюда' />
-                  <TextField id='outlined-helperText' label='Белки (Б)' />
-                  <TextField id='outlined-helperText' label='Жиры (Ж)' />
-                  <TextField id='outlined-helperText' label='Углеводы (У)' />
-                  <TextField id='outlined-helperText' label='Калории (К)' />
+            <Box sx={cpfcFormContainer}>
+               <Typography sx={addYourDishTypography}>Добавьте свое блюдо</Typography>
+               <Box sx={cpfcForm}>
+                  <TextField label='Название блюда' />
+                  <TextField label='Белки (Б)' />
+                  <TextField label='Жиры (Ж)' />
+                  <TextField label='Углеводы (У)' />
+                  <TextField label='Калории (К)' />
 
                   <Button variant='contained' sx={{ fontSize: '18px' }}>
                      Добавить блюдо
@@ -48,7 +47,7 @@ export const MainPage = () => {
                </Box>
             </Box>
 
-            <Box className='dishListContainer' sx={dishListContainer}>
+            <Box sx={dishListContainer}>
                <Box>Список продуктов</Box>
             </Box>
          </Box>

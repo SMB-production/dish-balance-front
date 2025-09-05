@@ -62,6 +62,12 @@ export const cpfcFormContainer: SxProps<Theme> = {
    borderRadius: '20px',
 };
 
+export const addYourDishTypography = {
+   mb: '20px',
+   fontWeight: '600',
+   fontSize: '25px',
+};
+
 export const cpfcForm: SxProps<Theme> = {
    display: 'flex',
    flexDirection: 'column',

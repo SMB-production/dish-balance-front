@@ -2,7 +2,6 @@ import { Button, TextField, ThemeProvider, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import { FormProvider } from 'react-hook-form';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-//import { useTranslation } from 'react-i18next';
 import { theme } from '../../../shared/style/theme';
 import {
    bodyCharacteristics,
@@ -20,62 +19,45 @@ interface AuthForm {
    age: number;
    weight: number;
    email: string;
-   password: number | string;
+   password: string;
 }
 
 export const RegistrationPage = () => {
    const methods = useForm<AuthForm>();
-   const {
-      register,
-      handleSubmit,
-      // formState: { errors },
-   } = methods;
+   const { register, handleSubmit } = methods;
 
    const handleSubmitForm: SubmitHandler<AuthForm> = data => {
       console.log(data);
       //реализовать интеграцию с бекендом
    };
 
-   // const handleSubmitFormError: SubmitErrorHandler<AuthForm> = data => {
-   //    console.log(data);
-   // };
-
    return (
       <ThemeProvider theme={theme}>
          <FormProvider {...methods}>
             <form onSubmit={handleSubmit(handleSubmitForm)}>
-               <Box className='parentRegistrationBoxContainer' sx={parentRegistrationBoxContainer}>
-                  <Box className='greetingRegistrationContainer' sx={greetingRegistrationContainer}>
-                     <Box
-                        className='greetingRegistrationPhotoContainer'
-                        sx={greetingRegistrationPhotoContainer}
-                     >
+               <Box sx={parentRegistrationBoxContainer}>
+                  <Box sx={greetingRegistrationContainer}>
+                     <Box sx={greetingRegistrationPhotoContainer}>
                         <img
                            src='../../../../public/icons/LogInPage_photo_phone.png'
                            alt='Phone'
                            style={greetingRegistrationPhoto}
                         />
                      </Box>
-                     <Box
-                        className='greetingRegistrationFormContainer'
-                        sx={greetingRegistrationFormContainer}
-                     >
-                        <Box className='greetingRegistrationTextContainer'>
+                     <Box sx={greetingRegistrationFormContainer}>
+                        <Box>
                            <Typography variant='h1' sx={greetingRegistrationText}>
                               Начнем путь к здоровому питанию!
                            </Typography>
                         </Box>
-                        <Box
-                           className='inputRegistrationFieldsContainer'
-                           sx={inputRegistrationFieldsContainer}
-                        >
+                        <Box sx={inputRegistrationFieldsContainer}>
                            <TextField
                               id='outlined-helperText'
                               label='Введите Ваше имя'
                               {...register('name')}
                            />
 
-                           <Box className='bodyCharacteristics' sx={bodyCharacteristics}>
+                           <Box sx={bodyCharacteristics}>
                               <TextField
                                  id='outlined-helperText'
                                  label='Введите Ваш возраст'

@@ -19,11 +19,22 @@ export const greetingPhotoContainer: SxProps<Theme> = {
    justifyContent: 'center',
 };
 
+export const imagePhone = {
+   display: 'block',
+   height: '100%',
+};
+
 export const greetingFormContainer: SxProps<Theme> = {
    display: 'flex',
    width: '50%',
    margin: '0px 30px 0px 20px',
    flexDirection: 'column',
+};
+
+export const letsEatHealthyTypography = {
+   fontSize: '60px',
+   fontWeight: '500',
+   mb: '100px',
 };
 
 export const inputFieldsContainer: SxProps<Theme> = {

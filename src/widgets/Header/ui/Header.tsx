@@ -28,7 +28,7 @@ export const Header = () => {
                      variant={'outlined'}
                      sx={{ backgroundColor: 'white', color: 'black', mr: '10px' }}
                   >
-                     Выйти
+                     {t('Выйти')}
                   </Button>
                   {/*Сделать выход из профиля по ссылке*/}
                   <LangSwitcher />

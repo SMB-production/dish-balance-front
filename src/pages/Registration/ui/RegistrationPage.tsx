@@ -13,6 +13,7 @@ import {
    inputRegistrationFieldsContainer,
    parentRegistrationBoxContainer,
 } from './styles.ts';
+import { useTranslation } from 'react-i18next';
 
 interface AuthForm {
    name: string;
@@ -31,6 +32,7 @@ export const RegistrationPage = () => {
       //реализовать интеграцию с бекендом
    };
 
+   const { t } = useTranslation('registration');
    return (
       <ThemeProvider theme={theme}>
          <FormProvider {...methods}>
@@ -47,45 +49,34 @@ export const RegistrationPage = () => {
                      <Box sx={greetingRegistrationFormContainer}>
                         <Box>
                            <Typography variant='h1' sx={greetingRegistrationText}>
-                              Начнем путь к здоровому питанию!
+                              {t('Начнем путь к здоровому питанию!')}
                            </Typography>
                         </Box>
                         <Box sx={inputRegistrationFieldsContainer}>
-                           <TextField
-                              id='outlined-helperText'
-                              label='Введите Ваше имя'
-                              {...register('name')}
-                           />
+                           <TextField label={t('Введите Ваше имя')} {...register('name')} />
 
                            <Box sx={bodyCharacteristics}>
                               <TextField
-                                 id='outlined-helperText'
-                                 label='Введите Ваш возраст'
+                                 label={t('Введите Ваш возраст')}
                                  sx={{ width: '50%' }}
                                  {...register('age')}
                               />
 
                               <TextField
-                                 id='outlined-helperText'
-                                 label='Введите Ваш вес'
+                                 label={t('Введите Ваш вес')}
                                  sx={{ width: '50%' }}
                                  {...register('weight')}
                               />
                            </Box>
 
+                           <TextField label={t('Введите Вашу почту')} {...register('email')} />
                            <TextField
-                              id='outlined-helperText'
-                              label='Введите Вашу почту'
-                              {...register('email')}
-                           />
-                           <TextField
-                              id='outlined-helperText'
-                              label='Введите Ваш пароль'
-                              helperText='Это поле обязательно'
+                              label={t('Введите Ваш пароль')}
+                              helperText={t('Это поле обязательно')}
                               {...register('password')}
                            />
                            <Button variant={'contained'} type='submit'>
-                              Войти
+                              {t('Зарегистрироваться')}
                            </Button>
                         </Box>
                      </Box>

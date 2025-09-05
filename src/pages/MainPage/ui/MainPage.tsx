@@ -14,8 +14,10 @@ import {
 import { Header } from '../../../widgets/Header';
 import { Button, TextField, Typography } from '@mui/material';
 import DataSaverOffIcon from '@mui/icons-material/DataSaverOff';
+import { useTranslation } from 'react-i18next';
 
 export const MainPage = () => {
+   const { t } = useTranslation('main');
    return (
       <Box sx={mainPageParentContainer}>
          <Box sx={dishesFormContainer}>
@@ -24,8 +26,7 @@ export const MainPage = () => {
             </Box>
             <Box sx={greetingTextAndGraphContainer}>
                <Typography sx={greetingTextContainer}>
-                  Cледи за своим питанием
-                  <br /> легко и удобно!
+                  {t('Cледи за своим питанием легко и удобно!')}
                </Typography>
                <Box sx={ringGraphContainer}>
                   <DataSaverOffIcon fontSize='large' />
@@ -33,16 +34,16 @@ export const MainPage = () => {
             </Box>
 
             <Box sx={cpfcFormContainer}>
-               <Typography sx={addYourDishTypography}>Добавьте свое блюдо</Typography>
+               <Typography sx={addYourDishTypography}>{t('Добавьте свое блюдо')}</Typography>
                <Box sx={cpfcForm}>
-                  <TextField label='Название блюда' />
-                  <TextField label='Белки (Б)' />
-                  <TextField label='Жиры (Ж)' />
-                  <TextField label='Углеводы (У)' />
-                  <TextField label='Калории (К)' />
+                  <TextField label={t('Название блюда')} />
+                  <TextField label={t('Белки (Б)')} />
+                  <TextField label={t('Жиры (Ж)')} />
+                  <TextField label={t('Углеводы (У)')} />
+                  <TextField label={t('Калории (К)')} />
 
                   <Button variant='contained' sx={{ fontSize: '18px' }}>
-                     Добавить блюдо
+                     {t('Добавить блюдо')}
                   </Button>
                </Box>
             </Box>

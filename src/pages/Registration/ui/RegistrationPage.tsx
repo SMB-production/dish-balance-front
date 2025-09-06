@@ -31,7 +31,6 @@ export const RegistrationPage = () => {
       console.log(data);
       //реализовать интеграцию с бекендом
    };
-
    const { t } = useTranslation('registration');
    return (
       <ThemeProvider theme={theme}>

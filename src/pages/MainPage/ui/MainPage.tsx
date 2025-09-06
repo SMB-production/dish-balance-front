@@ -15,9 +15,15 @@ import { Header } from '../../../widgets/Header';
 import { Button, TextField, Typography } from '@mui/material';
 import DataSaverOffIcon from '@mui/icons-material/DataSaverOff';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
+import i18n from 'i18next';
 
 export const MainPage = () => {
    const { t } = useTranslation('main');
+
+   useEffect(() => {
+      i18n.changeLanguage(navigator.language);
+   }, []);
    return (
       <Box sx={mainPageParentContainer}>
          <Box sx={dishesFormContainer}>

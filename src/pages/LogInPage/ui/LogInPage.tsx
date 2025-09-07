@@ -9,8 +9,10 @@ import {
    letsEatHealthyTypography,
    parentBoxContainer,
 } from './styles.ts';
+import { useTranslation } from 'react-i18next';
 
 export const LogInPage = () => {
+   const { t } = useTranslation('login');
    return (
       <Box sx={parentBoxContainer}>
          <Box sx={greetingContainer}>
@@ -24,21 +26,21 @@ export const LogInPage = () => {
             <Box sx={greetingFormContainer}>
                <Box>
                   <Typography variant='h1' sx={letsEatHealthyTypography}>
-                     Ваш путь к здоровому питанию!
+                     {t('Ваш путь к здоровому питанию!')}
                   </Typography>
                </Box>
                <Box sx={inputFieldsContainer}>
                   <TextField
                      id='outlined-helperText'
-                     label='Ваша почта'
-                     helperText='Это поле обязательно'
+                     label={t('Ваша почта')}
+                     helperText={t('Это поле обязательно')}
                   />
                   <TextField
                      id='outlined-helperText'
-                     label='Ваш пароль'
-                     helperText='Это поле обязательно'
+                     label={t('Ваш пароль')}
+                     helperText={t('Это поле обязательно')}
                   />
-                  <Button variant={'contained'}>Войти</Button>
+                  <Button variant={'contained'}>{t('Войти')}</Button>
                </Box>
             </Box>
          </Box>

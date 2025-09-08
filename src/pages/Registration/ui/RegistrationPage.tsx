@@ -1,72 +1,88 @@
-import { Button, TextField, ThemeProvider } from '@mui/material';
+import { Button, TextField, ThemeProvider, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import { FormProvider, type SubmitErrorHandler } from 'react-hook-form';
+import { FormProvider } from 'react-hook-form';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 import { theme } from '../../../shared/style/theme';
-import { parentStyles, authFormStyles, greetingTextStyles, inputValueStyles } from './styles.ts';
+import {
+   bodyCharacteristics,
+   greetingRegistrationContainer,
+   greetingRegistrationFormContainer,
+   greetingRegistrationPhoto,
+   greetingRegistrationPhotoContainer,
+   greetingRegistrationText,
+   inputRegistrationFieldsContainer,
+   parentRegistrationBoxContainer,
+} from './styles.ts';
+import { useTranslation } from 'react-i18next';
 
 interface AuthForm {
    name: string;
    age: number;
+   weight: number;
    email: string;
+   password: string;
 }
 
 export const RegistrationPage = () => {
    const methods = useForm<AuthForm>();
-   const {
-      register,
-      handleSubmit,
-      formState: { errors },
-   } = methods;
+   const { register, handleSubmit } = methods;
 
    const handleSubmitForm: SubmitHandler<AuthForm> = data => {
       console.log(data);
+      //реализовать интеграцию с бекендом
    };
-
-   const handleSubmitFormError: SubmitErrorHandler<AuthForm> = data => {
-      console.log(data);
-   };
-
    const { t } = useTranslation('registration');
-
    return (
       <ThemeProvider theme={theme}>
-         <Box sx={parentStyles}>
-            <Box sx={authFormStyles}>
-               <Box sx={greetingTextStyles}>{t('Давайте познакомимся!')}</Box>
-               <FormProvider {...methods}>
-                  <form onSubmit={handleSubmit(handleSubmitForm, handleSubmitFormError)}>
-                     <TextField
-                        placeholder={t('Введите ваше имя')}
-                        sx={inputValueStyles}
-                        {...register('name', { required: true })}
-                        aria-invalid={!!errors.name}
-                     />
-                     <TextField
-                        placeholder={t('Введите ваш возраст')}
-                        sx={inputValueStyles}
-                        {...register('age', { required: true })}
-                     />
-                     <TextField
-                        placeholder={t('Введите вашу почту')}
-                        sx={inputValueStyles}
-                        {...register('email', { required: true })}
-                     />
+         <FormProvider {...methods}>
+            <form onSubmit={handleSubmit(handleSubmitForm)}>
+               <Box sx={parentRegistrationBoxContainer}>
+                  <Box sx={greetingRegistrationContainer}>
+                     <Box sx={greetingRegistrationPhotoContainer}>
+                        <img
+                           src='../../../../public/icons/LogInPage_photo_phone.png'
+                           alt='Phone'
+                           style={greetingRegistrationPhoto}
+                        />
+                     </Box>
+                     <Box sx={greetingRegistrationFormContainer}>
+                        <Box>
+                           <Typography variant='h1' sx={greetingRegistrationText}>
+                              {t('Начнем путь к здоровому питанию!')}
+                           </Typography>
+                        </Box>
+                        <Box sx={inputRegistrationFieldsContainer}>
+                           <TextField label={t('Введите Ваше имя')} {...register('name')} />
 
-                     <Button
-                        variant='contained'
-                        color='primary'
-                        type='submit'
-                        sx={inputValueStyles}
-                        fullWidth={true}
-                     >
-                        {t('Регистрация')}
-                     </Button>
-                  </form>
-               </FormProvider>
-            </Box>
-         </Box>
+                           <Box sx={bodyCharacteristics}>
+                              <TextField
+                                 label={t('Введите Ваш возраст')}
+                                 sx={{ width: '50%' }}
+                                 {...register('age')}
+                              />
+
+                              <TextField
+                                 label={t('Введите Ваш вес')}
+                                 sx={{ width: '50%' }}
+                                 {...register('weight')}
+                              />
+                           </Box>
+
+                           <TextField label={t('Введите Вашу почту')} {...register('email')} />
+                           <TextField
+                              label={t('Введите Ваш пароль')}
+                              helperText={t('Это поле обязательно')}
+                              {...register('password')}
+                           />
+                           <Button variant={'contained'} type='submit'>
+                              {t('Зарегистрироваться')}
+                           </Button>
+                        </Box>
+                     </Box>
+                  </Box>
+               </Box>
+            </form>
+         </FormProvider>
       </ThemeProvider>
    );
 };

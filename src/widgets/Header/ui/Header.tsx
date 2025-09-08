@@ -1,29 +1,40 @@
-import { AppBar, IconButton, Toolbar } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Button, ThemeProvider, Toolbar, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { LinkedButton } from '../../../shared/LinkedButton';
 import { buttonMargin } from './styles.ts';
 import { LangSwitcher } from '../../../shared/LangSwitcher/ui/LangSwitcher.tsx';
+import { theme } from '../../../shared/style/theme';
+import Box from '@mui/material/Box';
 
 export const Header = () => {
    const { t } = useTranslation('translation');
-
    return (
-      <AppBar
-         position={'static'}
-         sx={{ backgroundColor: '#374151', justifyContent: 'space-between' }}
-      >
-         <Toolbar>
-            <IconButton sx={{}}>
-               {/* Нереализованный функционал, необходимо доделать */}
-               <MenuIcon />
-            </IconButton>
+      <ThemeProvider theme={theme}>
+         <AppBar
+            elevation={0}
+            position={'static'}
+            sx={{ backgroundColor: 'white', color: 'black' }}
+         >
+            <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+               <Typography fontWeight='700' fontSize='20px'>
+                  SM DISH
+               </Typography>
 
-            <LinkedButton route='/' text={t('Главная')} sx={buttonMargin} />
-            <LinkedButton route='/registration' text={t('Регистрация')} sx={buttonMargin} />
-            <LinkedButton route='/login' text={t('Вход')} sx={buttonMargin} />
-            <LangSwitcher />
-         </Toolbar>
-      </AppBar>
+               <Box sx={{ display: 'flex' }}>
+                  <LinkedButton route='/' text={t('Главная')} sx={buttonMargin} />
+                  <LinkedButton route='/' text={t('Мои блюда')} sx={buttonMargin} />
+                  <LinkedButton route='/' text={t('Профиль')} sx={buttonMargin} />
+                  <Button
+                     variant={'outlined'}
+                     sx={{ backgroundColor: 'white', color: 'black', mr: '10px' }}
+                  >
+                     {t('Выйти')}
+                  </Button>
+                  {/*Сделать выход из профиля по ссылке*/}
+                  <LangSwitcher />
+               </Box>
+            </Toolbar>
+         </AppBar>
+      </ThemeProvider>
    );
 };

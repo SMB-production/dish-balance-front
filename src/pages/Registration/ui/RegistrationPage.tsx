@@ -14,11 +14,15 @@ import {
    parentRegistrationBoxContainer,
 } from './styles.ts';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router';
+import { postRegistrationRequest } from '../../../shared/api/registration.ts';
+import { useNavigate } from 'react-router-dom';
 
-interface AuthForm {
+export interface AuthForm {
    name: string;
+   surname: string;
    age: number;
-   weight: number;
+   weight?: number;
    email: string;
    password: string;
 }
@@ -27,9 +31,10 @@ export const RegistrationPage = () => {
    const methods = useForm<AuthForm>();
    const { register, handleSubmit } = methods;
 
-   const handleSubmitForm: SubmitHandler<AuthForm> = data => {
-      console.log(data);
-      //реализовать интеграцию с бекендом
+   const navigate = useNavigate();
+   const handleSubmitForm: SubmitHandler<AuthForm> = async data => {
+      await postRegistrationRequest(data);
+      navigate('/login');
    };
    const { t } = useTranslation('registration');
    return (
@@ -54,6 +59,8 @@ export const RegistrationPage = () => {
                         <Box sx={inputRegistrationFieldsContainer}>
                            <TextField label={t('Введите Ваше имя')} {...register('name')} />
 
+                           <TextField label={t('Введите Вашу фамилию')} {...register('surname')} />
+
                            <Box sx={bodyCharacteristics}>
                               <TextField
                                  label={t('Введите Ваш возраст')}
@@ -77,6 +84,10 @@ export const RegistrationPage = () => {
                            <Button variant={'contained'} type='submit'>
                               {t('Зарегистрироваться')}
                            </Button>
+                           <Typography>
+                              Уже есть аккаунт?
+                              <Link to='/login'>Войти</Link>
+                           </Typography>
                         </Box>
                      </Box>
                   </Box>

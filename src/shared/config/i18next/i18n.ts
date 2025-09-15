@@ -11,7 +11,7 @@ i18n
       debug: true,
       fallbackLng: 'en',
       supportedLngs: ['en', 'ru'],
-      ns: ['main', 'registration', 'login.json'],
+      ns: ['main', 'registration', 'login'],
       defaultNS: 'translation',
       backend: {
          loadPath: '../../../../public/locales/{{lng}}/{{ns}}.json',

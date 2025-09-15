@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import './app/styles/globalStyles.css';
 import './shared/config/i18next/i18n';
 import { LogInPage } from './pages/LogInPage';
+import { PrivateRoute } from './shared/privateRoute';
 
 function App() {
    return (
@@ -15,7 +16,15 @@ function App() {
          <ThemeProvider theme={theme}>
             <CssBaseline />
             <Routes>
-               <Route path='/' element={<MainPage />} />
+               <Route
+                  path='/'
+                  element={
+                     <PrivateRoute>
+                        {' '}
+                        <MainPage />{' '}
+                     </PrivateRoute>
+                  }
+               ></Route>
                <Route path='/registration' element={<RegistrationPage />} />
                <Route path='/login' element={<LogInPage />} />
             </Routes>

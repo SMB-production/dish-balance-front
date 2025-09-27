@@ -85,8 +85,8 @@ export const RegistrationPage = () => {
                               {t('Зарегистрироваться')}
                            </Button>
                            <Typography>
-                              Уже есть аккаунт?
-                              <Link to='/login'>Войти</Link>
+                              {t('Уже есть аккаунт?')}
+                              <Link to='/login'>{t('Войти')}</Link>
                            </Typography>
                         </Box>
                      </Box>

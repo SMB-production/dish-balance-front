@@ -1,14 +1,14 @@
-import { useLocation, Navigate } from 'react-router-dom';
-import { ReactNode, useEffect, useState } from 'react';
+import { Navigate, RouteProps } from 'react-router-dom';
+import { FC, useEffect, useState } from 'react';
 import { getAuthStatus } from '../../api/authStatus.ts';
+import { CircularProgress } from '@mui/material';
 
-type childrenType = {
-   children: ReactNode;
-};
+type PrivateRouteProps = RouteProps;
 
-export const PrivateRoute = ({ children }: childrenType) => {
-   const location = useLocation();
+export const PrivateRoute: FC<PrivateRouteProps> = ({ children }) => {
    const [isAuth, setIsAuth] = useState(false);
+   const [isFetch, setIsFetch] = useState(true);
+
    useEffect(() => {
       const checkAuth = async () => {
          try {
@@ -17,13 +17,19 @@ export const PrivateRoute = ({ children }: childrenType) => {
          } catch (error) {
             console.error('Ошибка авторизации', error);
             setIsAuth(false);
+         } finally {
+            setIsFetch(false);
          }
       };
       checkAuth();
    }, []);
 
-   if (!isAuth) {
-      return <Navigate to={'/login'} state={{ from: location }} />;
+   if (isFetch) {
+      return <CircularProgress color={'primary'} />;
    }
-   return children;
+
+   if (!isAuth) {
+      return <Navigate to='login' replace />;
+   }
+   return <>{children}</>;
 };

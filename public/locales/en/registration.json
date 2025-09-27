@@ -7,6 +7,7 @@
 	"Введите Вашу почту": "Enter your e-mail",
 	"Введите Ваш пароль": "Enter your password",
 	"Это поле обязательно": "This field is required",
-	"Зарегистрироваться": "Register"
-
+	"Зарегистрироваться": "Register",
+	"Уже есть аккаунт?": "Already have an account?",
+	"Войти": "Lof In"
 }

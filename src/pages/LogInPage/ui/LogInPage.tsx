@@ -22,8 +22,8 @@ export interface LoginForm {
 export const LogInPage = () => {
    const { t } = useTranslation('login');
    const methods = useForm<LoginForm>();
-   const navigate = useNavigate();
    const { register, handleSubmit } = methods;
+   const navigate = useNavigate();
    const handleSubmitLogin: SubmitHandler<LoginForm> = async data => {
       try {
          await postLoginRequest(data);

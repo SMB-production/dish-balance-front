@@ -7,7 +7,7 @@ type PrivateRouteProps = RouteProps;
 
 export const PrivateRoute: FC<PrivateRouteProps> = ({ children }) => {
    const [isAuth, setIsAuth] = useState(false);
-   const [isFetch, setIsFetch] = useState(true);
+   const [isFetched, setIsFetched] = useState(false);
 
    useEffect(() => {
       const checkAuth = async () => {
@@ -18,13 +18,13 @@ export const PrivateRoute: FC<PrivateRouteProps> = ({ children }) => {
             console.error('Ошибка авторизации', error);
             setIsAuth(false);
          } finally {
-            setIsFetch(false);
+            setIsFetched(true);
          }
       };
       checkAuth();
    }, []);
 
-   if (isFetch) {
+   if (!isFetched) {
       return <CircularProgress color={'primary'} />;
    }
 

@@ -11,8 +11,7 @@ export const AppRoutes = () => {
             path='/'
             element={
                <PrivateRoute>
-                  {' '}
-                  <MainPage />{' '}
+                  <MainPage />
                </PrivateRoute>
             }
          />

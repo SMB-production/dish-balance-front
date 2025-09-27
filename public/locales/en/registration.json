@@ -1,10 +1,13 @@
 {
 	"Начнем путь к здоровому питанию!": "Let's start the path to a healthy diet!",
 	"Введите Ваше имя": "Enter your name",
+	"Введите Вашу фамилию": "Enter your surname",
 	"Введите Ваш возраст": "Enter your age",
 	"Введите Ваш вес": "Enter your weight",
 	"Введите Вашу почту": "Enter your e-mail",
 	"Введите Ваш пароль": "Enter your password",
 	"Это поле обязательно": "This field is required",
-	"Зарегистрироваться": "Register"
+	"Зарегистрироваться": "Register",
+	"Уже есть аккаунт?": "Already have an account?",
+	"Войти": "Lof In"
 }

@@ -5,9 +5,19 @@ import { buttonMargin } from './styles.ts';
 import { LangSwitcher } from '../../../shared/LangSwitcher/ui/LangSwitcher.tsx';
 import { theme } from '../../../shared/style/theme';
 import Box from '@mui/material/Box';
+import { postLogoutRequest } from '../../../shared/api/logout.ts';
 
 export const Header = () => {
    const { t } = useTranslation('translation');
+   const HandleLogOut = async () => {
+      try {
+         await postLogoutRequest();
+         window.location.reload();
+      } catch (error) {
+         console.log(error);
+      }
+   };
+
    return (
       <ThemeProvider theme={theme}>
          <AppBar
@@ -27,6 +37,7 @@ export const Header = () => {
                   <Button
                      variant={'outlined'}
                      sx={{ backgroundColor: 'white', color: 'black', mr: '10px' }}
+                     onClick={HandleLogOut}
                   >
                      {t('Выйти')}
                   </Button>

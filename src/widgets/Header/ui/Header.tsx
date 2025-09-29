@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 export const Header = () => {
    const { t } = useTranslation('translation');
    const navigate = useNavigate();
-   const HandleLogOut = async () => {
+   const handleLogOut = async () => {
       try {
          await postLogoutRequest();
          navigate('/login');
@@ -39,7 +39,7 @@ export const Header = () => {
                   <Button
                      variant={'outlined'}
                      sx={{ backgroundColor: 'white', color: 'black', mr: '10px' }}
-                     onClick={HandleLogOut}
+                     onClick={handleLogOut}
                   >
                      {t('Выйти')}
                   </Button>

@@ -6,13 +6,15 @@ import { LangSwitcher } from '../../../shared/LangSwitcher/ui/LangSwitcher.tsx';
 import { theme } from '../../../shared/style/theme';
 import Box from '@mui/material/Box';
 import { postLogoutRequest } from '../../../shared/api/logout.ts';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
    const { t } = useTranslation('translation');
+   const navigate = useNavigate();
    const HandleLogOut = async () => {
       try {
          await postLogoutRequest();
-         window.location.reload();
+         navigate('/login');
       } catch (error) {
          console.log(error);
       }

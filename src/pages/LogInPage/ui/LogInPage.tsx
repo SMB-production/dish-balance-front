@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { postLoginRequest } from '@features/auth/login/api/login.ts';
 import { useNavigate } from 'react-router-dom';
-import { type LoginForm } from '@features/auth/login/loginFormInterface/loginFormInterface.ts';
+import { LoginForm } from '@features/auth/login/loginFormInterface/loginFormInterface.ts';
 
 export const LogInPage = () => {
    const { t } = useTranslation('login');

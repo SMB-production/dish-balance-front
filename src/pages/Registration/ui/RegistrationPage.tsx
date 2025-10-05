@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { postRegistrationRequest } from '@features/auth/registration/api/registration.ts';
 import { useNavigate } from 'react-router-dom';
-import { type AuthForm } from '@features/auth/registration/registrationFormInterface/registrationFormInterface.ts';
+import { AuthForm } from '@features/auth/registration/registrationFormInterface/registrationFormInterface.ts';
 
 export const RegistrationPage = () => {
    const methods = useForm<AuthForm>();

@@ -1,7 +1,7 @@
-import { getUserInformation } from '../../../shared/api/userAccount.ts';
+import { getUserInformation } from '@entities/user/api/userAccount.ts';
 import { useEffect, useState } from 'react';
 import { Button, CircularProgress, Typography } from '@mui/material';
-import { Header } from '../../../widgets/Header';
+import { Header } from '@widgets/Header';
 import Box from '@mui/material/Box';
 import {
    editButtonContainer,
@@ -15,19 +15,7 @@ import {
    yourResultsTypographyContainer,
 } from './styles.ts';
 import { useTranslation } from 'react-i18next';
-
-export interface UserInfo {
-   id: string;
-   email: string;
-   name: string;
-   surname: string;
-   age: number;
-   weight: number;
-   height: number;
-   sex: string;
-   createdAt: string;
-   updatedAt: string;
-}
+import { UserInfo } from '@entities/user/types/userInfoInterface.ts';
 
 export const UserAccount = () => {
    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);

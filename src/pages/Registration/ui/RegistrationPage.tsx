@@ -2,7 +2,7 @@ import { Button, TextField, ThemeProvider, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import { FormProvider } from 'react-hook-form';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import { theme } from '../../../shared/style/theme';
+import { theme } from '@shared/style/theme';
 import {
    bodyCharacteristics,
    greetingRegistrationContainer,
@@ -15,17 +15,9 @@ import {
 } from './styles.ts';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import { postRegistrationRequest } from '../../../shared/api/registration.ts';
+import { postRegistrationRequest } from '@features/auth/registration/api/registration.ts';
 import { useNavigate } from 'react-router-dom';
-
-export interface AuthForm {
-   name: string;
-   surname: string;
-   age: number;
-   weight?: number;
-   email: string;
-   password: string;
-}
+import { AuthForm } from '@features/auth/registration/registrationFormInterface/registrationFormInterface.ts';
 
 export const RegistrationPage = () => {
    const methods = useForm<AuthForm>();

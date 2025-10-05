@@ -1,5 +1,5 @@
-import { AuthForm } from '../../pages/Registration/ui/RegistrationPage.tsx';
-import { baseAPI } from './api.ts';
+import { AuthForm } from '@pages/Registration/ui/RegistrationPage.tsx';
+import { baseAPI } from '@shared/api/api.ts';
 
 export const postRegistrationRequest = async (data: AuthForm) => {
    const response = await baseAPI.post('auth/register', data);

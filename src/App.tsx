@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@mui/material';
 import { Suspense } from 'react';
-import { theme } from './shared/style/theme';
+import { theme } from '@shared/style/theme';
 import CssBaseline from '@mui/material/CssBaseline';
 import './app/styles/globalStyles.css';
 import './shared/config/i18next/i18n';

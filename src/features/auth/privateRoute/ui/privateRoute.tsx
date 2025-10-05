@@ -1,6 +1,6 @@
 import { Navigate, RouteProps } from 'react-router-dom';
 import { FC, useEffect, useState } from 'react';
-import { getAuthStatus } from '../../api/authStatus.ts';
+import { getAuthStatus } from '@features/auth/authStatus/authStatus.ts';
 import { CircularProgress } from '@mui/material';
 
 type PrivateRouteProps = RouteProps;
@@ -29,7 +29,7 @@ export const PrivateRoute: FC<PrivateRouteProps> = ({ children }) => {
    }
 
    if (!isAuth) {
-      return <Navigate to='login' replace />;
+      return <Navigate to='/login' replace />;
    }
    return <>{children}</>;
 };

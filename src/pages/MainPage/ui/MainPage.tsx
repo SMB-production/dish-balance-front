@@ -11,7 +11,7 @@ import {
    mainPageParentContainer,
    ringGraphContainer,
 } from './styles.ts';
-import { Header } from '../../../widgets/Header';
+import { Header } from '@widgets/Header';
 import { Button, TextField, Typography } from '@mui/material';
 import DataSaverOffIcon from '@mui/icons-material/DataSaverOff';
 import { useTranslation } from 'react-i18next';

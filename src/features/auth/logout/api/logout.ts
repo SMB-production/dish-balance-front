@@ -1,4 +1,4 @@
-import { baseAPI } from './api.ts';
+import { baseAPI } from '@shared/api/api.ts';
 
 export const postLogoutRequest = async () => {
    const response = baseAPI.post('auth/logout');

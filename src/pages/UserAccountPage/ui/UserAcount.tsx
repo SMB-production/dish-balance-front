@@ -15,7 +15,7 @@ import {
    yourResultsTypographyContainer,
 } from './styles.ts';
 import { useTranslation } from 'react-i18next';
-import { UserInfo } from '@entities/user/types/userInfoInterface.ts';
+import { type UserInfo } from '@entities/user/types/userInfoInterface.ts';
 
 export const UserAccount = () => {
    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);

@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { PrivateRoute } from '../../shared/privateRoute';
-import { MainPage } from '../../pages/MainPage';
-import { RegistrationPage } from '../../pages/Registration';
-import { LogInPage } from '../../pages/LogInPage';
+import { PrivateRoute } from '@features/auth/privateRoute';
+import { MainPage } from '@pages/MainPage';
+import { RegistrationPage } from '@pages/Registration';
+import { LogInPage } from '@pages/LogInPage';
+import { UserAccount } from '@pages/UserAccountPage';
 
 export const AppRoutes = () => {
    return (
@@ -17,6 +18,14 @@ export const AppRoutes = () => {
          />
          <Route path='/registration' element={<RegistrationPage />} />
          <Route path='/login' element={<LogInPage />} />
+         <Route
+            path='/account'
+            element={
+               <PrivateRoute>
+                  <UserAccount />
+               </PrivateRoute>
+            }
+         />
       </Routes>
    );
 };
